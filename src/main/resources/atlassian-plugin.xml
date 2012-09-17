@@ -1,0 +1,31 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+    </plugin-info>
+    <web-item key="forward-issue" name="Forward Issue Web Item"
+              section="operations-operations" weight="100">
+        <label>Forward this issue</label>
+        <tooltip>Forward this issue (Clone and Move)</tooltip>
+        <link linkId="forward-issue-link">/secure/ForwardIssueDetails!default.jspa?id=$!{issue.id}
+        </link>
+        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+            <param name="permission">edit</param>
+        </condition>
+    </web-item>
+    <webwork1 key="ideo-forward-issue-details" name="Forward issue detail action"
+              class="java.lang.Object">
+        <description>
+            Action to forward issue (Clone And Move)
+        </description>
+        <actions>
+            <action
+                    name="com.ideotechnologies.jira.plugin.webwork.action.ForwardIssueDetailsAction"
+                    alias="ForwardIssueDetails">
+                <view name="input">/secure/views/issue/forwardissue-view.vm</view>
+                <view name="error">/secure/views/issue/forwardissue-view.vm</view>
+            </action>
+        </actions>
+    </webwork1>
+</atlassian-plugin>
