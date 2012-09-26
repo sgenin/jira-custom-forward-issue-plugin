@@ -10,7 +10,7 @@
         <tooltip>Forward this issue (Clone and Move)</tooltip>
         <link linkId="forward-issue-link">/secure/ForwardIssueDetails!default.jspa?id=$!{issue.id}
         </link>
-        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <condition class="com.atlassian.jira.plugin.webfragment.conditions.HasIssuePermissionCondition">
             <param name="permission">edit</param>
         </condition>
     </web-item>
